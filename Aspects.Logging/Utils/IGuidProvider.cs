@@ -1,6 +1,6 @@
 ﻿namespace Aspects.Logging.Utils;
 
-internal interface IGuidProvider
+public interface IGuidProvider
 {
     Guid NewGuid();
 }
