@@ -1,5 +1,10 @@
 ﻿# ![Logo](./Resources/logo_32x32.png) Aspects.Logging
-Add Aspects Logging to classes and methods, using [Aspect Injector](https://github.com/pamidur/aspect-injector).
+Using [Aspect Injector](https://github.com/pamidur/aspect-injector), this projects provides logging aspects for .NET applications. 
+It allows you to log method calls, exceptions, and performance metrics without modifying the original code.
+
+Logging is done using the [Microsoft.Extensions.Logging](https://learn.microsoft.com/en-us/dotnet/core/extensions/logging) framework, which is widely used in .NET applications.
+
+Using attributes on class-level or method-level, you can specify logging behavior such as logging before and after method execution, logging exceptions, and measuring performance.
 
 ## 📦 Aspects.Logging
 [![NuGet Badge](https://img.shields.io/nuget/v/Aspects.Logging)](https://www.nuget.org/packages/Aspects.Logging)<br>
@@ -22,7 +27,7 @@ var serviceProvider = services.BuildServiceProvider();
  
 ### Example: logging on class-level
 
-#### Add `LogAspect` attribute to the class
+#### Add `LogAspect` attribute to a `class`
 ``` c#
 [LogAspect(LogLevel.Information)]
 class Test
@@ -74,7 +79,7 @@ System.AccessViolationException: TestEx
 ```
 
 
-#### Add `LogAspect` attribute to a method
+#### Add `LogAspect` attribute to a `method`
 ``` c#
 [LogAspect(logPoint: LogPoint.Finally)]
 public void TestFinally()
