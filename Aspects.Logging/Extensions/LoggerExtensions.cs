@@ -18,9 +18,13 @@ internal static class LoggerExtensions
 
     public static void OnException(this ILogger? logger, LogArguments logArguments, Exception exception)
     {
-        var (format, args) = GetFormatWithArgs(logArguments, "{logPoint}", nameof(OnException));
+        if (logger == null || !logger.IsEnabled(LogLevel.Error))
+        {
+            return;
+        }
 
-        logger?.LogError(exception, format, args);
+        var (format, args) = GetFormatWithArgs(logArguments, "{logPoint}", nameof(OnException));
+        logger.LogError(exception, format, args);
     }
 
     public static void OnFinally(this ILogger? logger, LogArguments args, TimeSpan elapsed)
@@ -30,9 +34,13 @@ internal static class LoggerExtensions
 
     private static void LogEvent(this ILogger? logger, LogArguments logArguments, [StructuredMessageTemplate] string message, params object?[] extraArgs)
     {
-        var (format, args) = GetFormatWithArgs(logArguments, message, extraArgs);
+        if (logger == null || !logger.IsEnabled(logArguments.LogLevel))
+        {
+            return;
+        }
 
-        logger?.Log(logArguments.LogLevel, format, args);
+        var (format, args) = GetFormatWithArgs(logArguments, message, extraArgs);
+        logger.Log(logArguments.LogLevel, format, args);
     }
 
     private static (string Format, object?[] Args) GetFormatWithArgs(LogArguments logArguments, [StructuredMessageTemplate] string message, params object?[] extraArgs)
