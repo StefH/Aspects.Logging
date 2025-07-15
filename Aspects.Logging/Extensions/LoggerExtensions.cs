@@ -18,7 +18,7 @@ internal static class LoggerExtensions
 
     public static void OnException(this ILogger? logger, LogArguments logArguments, Exception exception)
     {
-        if (logger == null || !logger.IsEnabled(LogLevel.Error))
+        if (logger == null)
         {
             return;
         }
@@ -34,7 +34,7 @@ internal static class LoggerExtensions
 
     private static void LogEvent(this ILogger? logger, LogArguments logArguments, [StructuredMessageTemplate] string message, params object?[] extraArgs)
     {
-        if (logger == null || !logger.IsEnabled(logArguments.LogLevel))
+        if (logger == null)
         {
             return;
         }
