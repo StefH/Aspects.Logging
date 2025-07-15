@@ -1,6 +1,6 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <Version>2.0.0-preview-01</Version>
+    <Version>3.0.0-preview-01</Version>
     <TargetFrameworks>net4.8;netstandard2.0;netstandard2.1;net8.0</TargetFrameworks>
     <Description>With the help of this package, it is possible to easily add logging (performance logging) to methods or an entire class using attributes.</Description>
     <ImplicitUsings>enable</ImplicitUsings>
