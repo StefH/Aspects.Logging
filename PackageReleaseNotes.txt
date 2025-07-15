@@ -1,0 +1,4 @@
+# 0.0.1 (15 June 2025)
+- #1 Initial code [enhancement]
+
+The full release notes can be found here: https://github.com/StefH/n8n.SDK/blob/main/ReleaseNotes.md
